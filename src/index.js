@@ -87,13 +87,9 @@ const createCrud = ({
   if (typeof customUrlFn === 'function') {
     rootUrl = customUrlFn;
   } else if (typeof urlRoot === 'string') {
-    rootUrl = ((url) => {
-      const lastCharacter = url.substr(-1);
-
-      return lastCharacter === '/' ? url.slice(0, -1) : url;
-    })(urlRoot);
+    rootUrl = urlRoot;
   } else {
-    rootUrl = `/api/${resource}`;
+    rootUrl = `/api/${resource}/`;
   }
 
   return {
