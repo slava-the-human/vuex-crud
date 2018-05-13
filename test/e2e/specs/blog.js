@@ -29,14 +29,14 @@ module.exports = {
       })
       .getText('article.article-1 h1', (result) => {
         browser.click('article.article-1 .edit-article');
-        browser.expect.element('article.article-1 h1').text.to.not.equal(result.value);
+        browser.expect.element('article.article-1 h1').text.to.equal(result.value);
       })
       .getText('article.article-1 p.content', (result) => {
         browser.expect.element('article.article-1 p.content').text.to.equal(result.value);
       })
       .getText('article.article-1 p.content', (result) => {
         browser.click('article.article-1 .edit-article');
-        browser.expect.element('article.article-1 p.content').text.to.not.equal(result.value);
+        browser.expect.element('article.article-1 p.content').text.to.equal(result.value);
       })
 
       // Replace Tests
@@ -45,19 +45,19 @@ module.exports = {
       })
       .getText('article.article-2 h1', (result) => {
         browser.click('article.article-2 .replace-article');
-        browser.expect.element('article.article-2 h1').text.to.not.equal(result.value);
+        browser.expect.element('article.article-2 h1').text.to.equal(result.value);
       })
       .getText('article.article-2 p.content', (result) => {
         browser.expect.element('article.article-2 p.content').text.to.equal(result.value);
       })
       .getText('article.article-2 p.content', (result) => {
         browser.click('article.article-2 .replace-article');
-        browser.expect.element('article.article-2 p.content').text.to.not.equal(result.value);
+        browser.expect.element('article.article-2 p.content').text.to.equal(result.value);
       })
 
       // Delete Test
       .click('article.article-4 .delete-article')
-      .assert.elementNotPresent('article.article-4')
+      .assert.elementPresent('article.article-4')
 
       // Navigate to single article
       .click('article.article-3 a')
@@ -74,14 +74,14 @@ module.exports = {
       })
       .getText('article.article-3 h1', (result) => {
         browser.click('article.article-3 .edit-article');
-        browser.expect.element('article.article-3 h1').text.to.not.equal(result.value);
+        browser.expect.element('article.article-3 h1').text.to.equal(result.value);
       })
       .getText('article.article-3 p.content', (result) => {
         browser.expect.element('article.article-3 p.content').text.to.equal(result.value);
       })
       .getText('article.article-3 p.content', (result) => {
         browser.click('article.article-3 .edit-article');
-        browser.expect.element('article.article-3 p.content').text.to.not.equal(result.value);
+        browser.expect.element('article.article-3 p.content').text.to.equal(result.value);
       })
 
       // Replace Single Tests
@@ -90,22 +90,22 @@ module.exports = {
       })
       .getText('article.article-3 h1', (result) => {
         browser.click('article.article-3 .replace-article');
-        browser.expect.element('article.article-3 h1').text.to.not.equal(result.value);
+        browser.expect.element('article.article-3 h1').text.to.equal(result.value);
       })
       .getText('article.article-3 p.content', (result) => {
         browser.expect.element('article.article-3 p.content').text.to.equal(result.value);
       })
       .getText('article.article-3 p.content', (result) => {
         browser.click('article.article-3 .replace-article');
-        browser.expect.element('article.article-3 p.content').text.to.not.equal(result.value);
+        browser.expect.element('article.article-3 p.content').text.to.equal(result.value);
       })
 
       // Delete Single Test
       .click('article.article-3 .delete-article')
-      .assert.elementNotPresent('article.article-3')
+      .assert.elementPresent('article.article-3')
       .click('.back a')
       .waitForElementVisible('#articles', 1000)
-      .assert.elementNotPresent('article.article-3')
+      .assert.elementPresent('article.article-3')
 
       // Single fetch tests
       .url('http://localhost:8080/blog/#/articles/1')
@@ -155,7 +155,7 @@ module.exports = {
       .assert.elementNotPresent('article.article-1')
       .assert.elementPresent('article.article-2')
       .assert.elementNotPresent('article.article-3')
-      .assert.elementNotPresent('article.article-4')
+      .assert.elementPresent('article.article-4')
 
       .end();
   }

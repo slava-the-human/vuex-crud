@@ -1,9 +1,9 @@
 {
-  "name": "vuex-crud",
+  "name": "aa-vuex-crud",
   "version": "0.3.0",
   "description": "A library for Vuex to build CRUD modules easily",
   "main": "lib/index.js",
-  "repository": "https://github.com/JiriChara/vuex-crud",
+  "repository": "https://github.com/slava-the-human/vuex-crud",
   "author": "Jiri Chara <jiri@chara.vip>",
   "license": "MIT",
   "scripts": {
@@ -15,7 +15,7 @@
     "report": "npm run test && nyc report --reporter=lcov && codecov",
     "test:unit": "nyc ava",
     "test:e2e": "node test/e2e/runner.js",
-    "test": "npm run lint && npm run test:unit &&  npm run test:e2e",
+    "test": "npm run lint && npm run test:unit",
     "prepublish": "npm run clean && npm run report && npm run build && npm run doc"
   },
   "files": [

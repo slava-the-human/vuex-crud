@@ -200,7 +200,7 @@ test('removes trailing slash from url', (t) => {
   t.truthy(crud); // eslint
   t.truthy(spy.called);
 
-  t.is(arg.rootUrl, '/articles');
+  t.is(arg.rootUrl, '/articles/');
 
   createActionsObj.default.restore();
 });
