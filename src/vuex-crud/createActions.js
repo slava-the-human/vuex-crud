@@ -20,7 +20,7 @@ const createActions = ({
       return rootUrl(...args);
     }
 
-    return id ? `${rootUrl}/${id}` : rootUrl;
+    return id ? `${rootUrl}/${id}/` : rootUrl;
   };
 
   if (only.includes('FETCH_LIST')) {
