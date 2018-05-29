@@ -282,7 +282,7 @@ test('calls get with correct arguments', (t) => {
 
   fetchSingle({ commit }, { id, config });
 
-  t.true(spy.calledWith(`/articles/${id}`, config));
+  t.true(spy.calledWith(`/articles/${id}/`, config));
 
   client.get.restore();
 });
@@ -633,7 +633,7 @@ test('calls patch with correct arguments', (t) => {
 
   update({ commit }, { id, data, config });
 
-  t.true(spy.calledWith(`/articles/${id}`, data, config));
+  t.true(spy.calledWith(`/articles/${id}/`, data, config));
 
   client.patch.restore();
 });
@@ -821,7 +821,7 @@ test('calls put with correct arguments', (t) => {
 
   replace({ commit }, { id, data, config });
 
-  t.true(spy.calledWith(`/articles/${id}`, data, config));
+  t.true(spy.calledWith(`/articles/${id}/`, data, config));
 
   client.put.restore();
 });
@@ -1010,7 +1010,7 @@ test('calls delete with correct arguments', (t) => {
 
   destroy({ commit }, { id, config });
 
-  t.true(spy.calledWith(`/articles/${id}`, config));
+  t.true(spy.calledWith(`/articles/${id}/`, config));
 
   client.delete.restore();
 });
@@ -1039,7 +1039,7 @@ test('destroy supports customUrl', (t) => {
 
 test('destroy supports customUrlFnArgs', (t) => {
   const { destroy } = createActions({
-    rootUrl(id, parentId) { return `/users/${parentId}/articles/${id}`; },
+    rootUrl(id, parentId) { return `/users/${parentId}/articles/${id}/`; },
     only: ['DESTROY'],
     client,
     parseList: res => res,
@@ -1059,14 +1059,14 @@ test('destroy supports customUrlFnArgs', (t) => {
     customUrlFnArgs: '456'
   });
 
-  t.true(spy.calledWith('/users/456/articles/123', config));
+  t.true(spy.calledWith('/users/456/articles/123/', config));
 
   client.delete.restore();
 });
 
 test('destroy supports customUrlFnArgs as array', (t) => {
   const { destroy } = createActions({
-    rootUrl(id, parentId) { return `/users/${parentId}/articles/${id}`; },
+    rootUrl(id, parentId) { return `/users/${parentId}/articles/${id}/`; },
     only: ['DESTROY'],
     client,
     parseList: res => res,
@@ -1086,7 +1086,7 @@ test('destroy supports customUrlFnArgs as array', (t) => {
     customUrlFnArgs: ['456']
   });
 
-  t.true(spy.calledWith('/users/456/articles/123', config));
+  t.true(spy.calledWith('/users/456/articles/123/', config));
 
   client.delete.restore();
 });
